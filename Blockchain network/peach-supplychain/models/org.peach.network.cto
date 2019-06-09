@@ -1,0 +1,66 @@
+
+namespace org.peach.network
+
+
+asset Peach identified by peach_id {
+  o String farm_id
+  o String peach_id
+  o String timestamp
+  --> Trader owner
+}
+
+abstract participant Trader {
+    o String company
+    o String id
+    o String timestamp
+}
+
+asset farm identified by peach_id {
+    o String peach_id
+    o String type_of_product
+    o String city
+    o String region
+    o String acres
+    o String num_of_trees
+    o String age
+    o String kg_of_production
+    o String official_id
+    o String co_ordinates
+}
+
+participant Farmer identified by peach_id extends Trader {
+    o String peach_id
+    o String name
+    o String address
+    o String farm_id
+    o String city
+    o String zip
+    o String phone
+    o String vat
+}
+
+participant coop identified by peach_id extends Trader{
+    o String weight_of_shipment
+    o String peach_id
+    o String num_of_batch
+    o String quality_check
+}
+
+participant transporter identified by peach_id extends Trader{
+    o String picked_from_coop
+    o String delivered_to_retailer
+    o String peach_id
+    o String driver_name
+    o String license_plate
+}
+
+participant Retailer identified by peach_id extends Trader {
+    o String vat
+    o String peach_id
+}
+
+transaction transfer_peach {
+    o String peach_id
+    --> Trader new_owner
+}
+

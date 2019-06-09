@@ -11,6 +11,7 @@ exports.sendDataToBlockchain = async (type , data) => {
                     await axios.post(constants.hyperledgerUrl + 'Farmer' , data.farmer);
                     return constants.responseMessages.Success;
                 case 'Coop' :
+                    console.log(data.coop)
                     await axios.post(constants.hyperledgerUrl + 'coop', data.coop );
                     return constants.responseMessages.Success;
                 case 'Transporter' :

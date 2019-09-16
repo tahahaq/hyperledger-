@@ -13,6 +13,8 @@ abstract participant Trader {
     o String company
     o String id
     o String timestamp
+        o String co_ordinates
+
 }
 
 asset farm identified by peach_id {
@@ -35,6 +37,7 @@ participant Farmer identified by peach_id extends Trader {
     o String farm_id
     o String city
     o String zip
+
     o String phone
     o String vat
 }
@@ -43,6 +46,8 @@ participant coop identified by peach_id extends Trader{
     o String weight_of_shipment
     o String peach_id
     o String num_of_batch
+        o String co_ordinates
+
     o String quality_check
 }
 
@@ -50,12 +55,15 @@ participant transporter identified by peach_id extends Trader{
     o String picked_from_coop
     o String delivered_to_retailer
     o String peach_id
+        o String co_ordinates
+
     o String driver_name
     o String license_plate
 }
 
 participant Retailer identified by peach_id extends Trader {
     o String vat
+     o String co_ordinates
     o String peach_id
 }
 

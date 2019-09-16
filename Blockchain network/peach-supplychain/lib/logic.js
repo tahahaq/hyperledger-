@@ -11,11 +11,11 @@ const namespace = 'org.peach.network';
  */
 
 async function transfer_peach(tx) {
-    let pineRegistry = await getAssetRegistry(namespace + '.Peach');
+    let peachRegistry = await getAssetRegistry(namespace + '.Peach');
     try {
-        let peach = await pineRegistry.get(tx.peach_id);
+        let peach = await peachRegistry.get(tx.peach_id);
         peach.owner = tx.new_owner;
-        await pineRegistry.update(peach);
+        await peachRegistry.update(peach);
     } catch (error) {
         console.error(error);
     }
